@@ -1,0 +1,137 @@
+/* استايل عام */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cairo", Arial, sans-serif;
+  direction: rtl;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* أنيميشن ظهور */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* أنيميشن خلفية متدرجة */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* النافبار */
+nav {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  text-align: center;
+}
+nav a {
+  color: #ffeb3b;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+nav a:hover { color: #fff; }
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* زر واتساب */
+.whatsapp-btn {
+  display:inline-block;
+  background:#25D366;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  margin-top:15px;
+  font-weight:bold;
+  transition: background 0.3s;
+}
+.whatsapp-btn:hover { background:#20b955; }
+
+/* ============================= */
+/* استايل خاص بكل صفحة */
+
+/* الرئيسية */
+body.home-page {
+  background: linear-gradient(-45deg, #ff416c, #ff4b2b, #ff9966, #ff5e62);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+body.home-page h1 { 
+  font-size: 40px;
+  text-shadow: 2px 2px 10px #000; 
+}
+
+/* عنّا */
+body.about-page {
+  background: linear-gradient(-45deg, #1e3c72, #2a5298, #0f2027, #203a43);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+body.about-page h1 { 
+  font-size: 36px;
+  color: #ffeb3b;
+}
+
+/* الخصوصية */
+body.privacy-page {
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+}
+body.privacy-page h1 {
+  font-size: 34px;
+  color: #00e676;
+}
+
+/* الشروط */
+body.terms-page {
+  background: linear-gradient(-45deg, #654ea3, #eaafc8, #c33764, #1d2671);
+  background-size: 400% 400%;
+  animation: gradientMove 20s ease infinite;
+}
+body.terms-page h1 {
+  font-size: 34px;
+  background: rgba(255,255,255,0.8);
+  color: #222;
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* تواصل معنا */
+body.contact-page {
+  background: linear-gradient(-45deg, #11998e, #38ef7d, #56ccf2, #2f80ed);
+  background-size: 400% 400%;
+  animation: gradientMove 16s ease infinite;
+}
+body.contact-page h1 {
+  font-size: 36px;
+  text-shadow: 2px 2px 10px #000;
+}

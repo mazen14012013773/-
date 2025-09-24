@@ -1,287 +1,86 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Google Site Verification -->
-<meta name="google-site-verification" content="1_D7kIX3WbeQSDv4C1Qh1TTsFL-yZQBHUJDMIUM8SsQ" />
-
-<title>معارف - المطور مازن محمد</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معارف - الرئيسية</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background: linear-gradient(270deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
+      background-size: 1400% 1400%;
+      animation: rainbowBG 25s ease infinite;
+      color: #fff;
+      text-align: center;
+    }
+    @keyframes rainbowBG {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    nav {
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+    }
+    nav a {
+      color: #ffeb3b;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; color:#fff; }
+    .container {
+      padding: 40px 20px;
+    }
+    .title3d {
+      font-size: 60px;
+      text-shadow: 2px 2px #000, 3px 3px #ff0000, 4px 4px #ff9900;
+    }
+    .description { max-width: 800px; margin: auto; line-height:1.8; }
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      background: #f1c40f;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+    button:hover { background:#f39c12; }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
 <body>
 
-<canvas id="particleCanvas"></canvas>
+<nav>
+  <a href="index.html">الرئيسية</a>
+  <a href="about.html">عنّا</a>
+  <a href="privacy.html">سياسة الخصوصية</a>
+  <a href="terms.html">الشروط والأحكام</a>
+  <a href="contact.html">اتصل بنا</a>
+</nav>
 
 <div class="container">
-
-  <!-- اسم المطور -->
-  <h2 class="developer">المطور: مازن محمد</h2>
-
-  <!-- اسم التطبيق -->
   <h1 class="title3d">معارف</h1>
-
+  <h2>المطور: مازن محمد</h2>
   <div class="description">
     <p><strong>اسم الفكرة:</strong> معارف</p>
-    <p><strong>وصف الفكرة:</strong> تطبيق تعليمي للطلاب من الصف الرابع إلى الصف السادس مزود بالذكاء الاصطناعي.</p>
-    <p><strong>كيفية الاستخدام:</strong> يمكن للطلاب طرح الأسئلة أو طلب توضيح الواجبات.</p>
-    <p><strong>التقنيات:</strong> قوائم تشغيل الفيديوهات لجميع المواد + ذكاء اصطناعي للإجابة.</p>
+    <p><strong>الوصف:</strong> تطبيق تعليمي للطلاب من الصف الرابع إلى السادس الابتدائي مدعوم بالذكاء الاصطناعي.</p>
+    <p><strong>مميزاته:</strong> فيديوهات تعليمية + حلول واجبات + ذكاء اصطناعي للإجابة.</p>
   </div>
-
-  <!-- زر التحميل -->
-  <button id="downloadBtn">تحميل التطبيق</button>
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar">جارٍ فحص الأمان...</div>
-  </div>
+  <button onclick="window.location.href='https://www.mediafire.com/file/9w8yjl3jluexcy8/%25D9%2585%25D8%25B9%25D8%25A7%25D8%25B1%25D9%2581_.apk/file'">
+    تحميل التطبيق
+  </button>
 </div>
 
-<footer>© معارف 2025 - المطور مازن محمد</footer>
-
-<!-- الأصوات -->
-<audio id="startSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
-<audio id="beepSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3"></audio>
-<audio id="successSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
-
-<script>
-// عناصر التحميل
-const btn = document.getElementById("downloadBtn");
-const progressContainer = document.querySelector(".progress-container");
-const progressBar = document.getElementById("progressBar");
-
-const startSound = document.getElementById("startSound");
-const beepSound = document.getElementById("beepSound");
-const successSound = document.getElementById("successSound");
-
-// رابط ملف ميديافاير
-const mediafireLink = "https://www.mediafire.com/file/9w8yjl3jluexcy8/%25D9%2585%25D8%25B9%25D8%25A7%25D8%25B1%25D9%2581_.apk/file";
-
-btn.addEventListener("click", () => {
-  startSound.play();
-  progressContainer.style.display = "block";
-  progressBar.style.width = "0%";
-  progressBar.innerText = "جارٍ فحص الأمان...";
-
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += 5;
-    progressBar.style.width = progress + "%";
-
-    if (progress === 50) beepSound.play();
-    if (progress >= 100) {
-      clearInterval(interval);
-      progressBar.innerText = "تم التحميل بنجاح ✅";
-      progressBar.classList.add("success");
-      successSound.play();
-
-      // فتح رابط ميديافاير بعد ثانية
-      setTimeout(() => {
-        window.location.href = mediafireLink;
-      }, 1000);
-    }
-  }, 200);
-});
-
-// خلفية Particles (نجوم)
-const canvas = document.getElementById("particleCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars = [];
-
-function initStars() {
-  stars = [];
-  for (let i = 0; i < 150; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 2,
-      dx: (Math.random() - 0.5) * 0.3,
-      dy: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random()
-    });
-  }
-}
-
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255, 255, 255," + star.opacity + ")";
-    ctx.fill();
-
-    star.x += star.dx;
-    star.y += star.dy;
-
-    // ارتداد النجوم عند الحواف
-    if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
-    if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
-
-    // تغيير عشوائي في الشفافية
-    star.opacity += (Math.random() - 0.5) * 0.05;
-    if (star.opacity < 0.1) star.opacity = 0.1;
-    if (star.opacity > 1) star.opacity = 1;
-  });
-  requestAnimationFrame(drawStars);
-}
-
-initStars();
-drawStars();
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  initStars();
-});
-</script>
-
-<!-- CSS -->
-<style>
-/* خلفية */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  direction: rtl;
-  overflow-x: hidden;
-  color: #fff;
-  height: 100%;
-  background: linear-gradient(270deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
-  background-size: 1400% 1400%;
-  animation: rainbowBG 25s ease infinite;
-}
-@keyframes rainbowBG {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height:100%;
-  z-index: 0;
-}
-
-/* الحاوية */
-.container {
-  position: relative;
-  text-align: center;
-  padding: 50px 20px;
-  max-width: 1000px;
-  margin: auto;
-  z-index: 1;
-  background: rgba(0,0,0,0.4);
-  border-radius: 20px;
-}
-
-/* 3D اسم المطور */
-.developer {
-  font-size: 28px;
-  margin: 0 0 15px;
-  color: #ffeb3b;
-  text-shadow: 2px 2px 0 #000, 4px 4px 10px #ff5733;
-  animation: floatText 3s ease-in-out infinite;
-}
-@keyframes floatText {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
-}
-
-/* 3D عنوان التطبيق */
-.title3d {
-  font-size: 70px;
-  margin-bottom: 30px;
-  color: #fff;
-  text-shadow: 
-    1px 1px 0 #000,
-    2px 2px 0 #ff0000,
-    3px 3px 0 #ff9900,
-    4px 4px 0 #00ff00,
-    5px 5px 15px #000;
-  animation: glow 2s ease-in-out infinite alternate, fadeInDown 1s ease forwards;
-}
-@keyframes glow {
-  0% {text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 40px #ffeb3b;}
-  100% {text-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #ffeb3b;}
-}
-@keyframes fadeInDown {0% {opacity:0; transform: translateY(-50px);}100% {opacity:1; transform: translateY(0);}}
-
-/* الوصف */
-.description {
-  font-size:18px; 
-  line-height:1.7; 
-  max-width:800px; 
-  margin:20px auto; 
-  text-shadow:1px 1px 5px #000; 
-  animation: fadeIn 2s ease forwards; 
-  opacity:0;
-}
-@keyframes fadeIn {0% {opacity:0;} 100% {opacity:1;}}
-.description strong {color:#ffeb3b;}
-
-/* الزر */
-button {
-  padding: 18px 35px;
-  font-size: 22px;
-  cursor: pointer;
-  background-color: #f1c40f;
-  border: none;
-  border-radius: 15px;
-  color: #000;
-  margin-top: 40px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-  position: relative;
-  animation: pulseButton 2s infinite alternate;
-}
-@keyframes pulseButton {0% {transform: scale(1);}50% {transform: scale(1.1);}100% {transform: scale(1);}}
-button:hover {background-color: #f39c12; box-shadow: 0 10px 35px rgba(0,0,0,0.8);}
-
-/* Progress Bar */
-.progress-container {
-  width:80%; 
-  background-color:#333; 
-  border-radius:15px; 
-  margin:30px auto; 
-  display:none; 
-  overflow:hidden;
-}
-.progress-bar {
-  height:35px; 
-  width:0%; 
-  background: linear-gradient(90deg, #f1c40f, #ff5733); 
-  text-align:center; 
-  line-height:35px; 
-  font-weight:bold; 
-  color:#000; 
-  transition: width 0.2s ease;
-}
-.success {
-  background-color:#2ecc71 !important; 
-  color:#fff; 
-  box-shadow:0 0 50px #2ecc71; 
-  animation: pulse 1s infinite alternate;
-}
-@keyframes pulse {0% {box-shadow:0 0 20px #2ecc71;} 100% {box-shadow:0 0 50px #2ecc71;}}
-
-/* الفوتر */
-footer {
-  text-align:center; 
-  font-size:16px; 
-  margin-top:50px; 
-  text-shadow:1px 1px 3px #000;
-}
-
-/* موبايل */
-@media(max-width:600px){
-  .title3d{font-size:45px;}
-  .developer{font-size:20px;}
-  button{font-size:18px;padding:15px 25px;}
-  .description{font-size:16px;}
-}
-</style>
+<footer>© 2025 معارف - المطور مازن محمد</footer>
 </body>
 </html>

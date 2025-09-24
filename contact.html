@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا - معارف</title>
+  <style>
+    body {margin:0; font-family:Arial; direction:rtl; background:#111; color:#fff;}
+    nav {background:#222; padding:15px;}
+    nav a {color:#ffeb3b; margin:0 10px; text-decoration:none;}
+    nav a:hover{color:#fff;}
+    .container{padding:30px; max-width:800px; margin:auto;}
+    form {display:flex; flex-direction:column;}
+    input, textarea {margin:10px 0; padding:10px; border-radius:8px; border:none;}
+    button {padding:12px; background:#f1c40f; border:none; border-radius:8px; cursor:pointer;}
+    button:hover {background:#f39c12;}
+    .contact-links {margin:20px 0;}
+    .whatsapp-btn {
+      display:inline-block;
+      background:#25D366;
+      color:#fff;
+      padding:12px 20px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .whatsapp-btn:hover {background:#20b955;}
+    footer{margin-top:40px; text-align:center; background:#222; padding:15px;}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">الرئيسية</a>
+  <a href="about.html">عنّا</a>
+  <a href="privacy.html">سياسة الخصوصية</a>
+  <a href="terms.html">الشروط والأحكام</a>
+  <a href="contact.html">اتصل بنا</a>
+</nav>
+
+<div class="container">
+  <h1>اتصل بنا</h1>
+  <p>يمكنك التواصل معنا مباشرة عبر:</p>
+  <div class="contact-links">
+    <p><strong>البريد الإلكتروني:</strong> 
+      <a href="mailto:mazenmohamed345123@gmail.com" style="color:#ffeb3b;">mazenmohamed345123@gmail.com</a>
+    </p>
+    <p>
+      <a class="whatsapp-btn" href="https://wa.me/201111592379" target="_blank">💬 تواصل عبر واتساب</a>
+    </p>
+  </div>
+
+  <h2>أرسل رسالة سريعة:</h2>
+  <form action="mailto:mazenmohamed345123@gmail.com" method="POST" enctype="text/plain">
+    <input type="text" name="name" placeholder="الاسم" required>
+    <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+    <textarea name="message" placeholder="رسالتك" rows="5" required></textarea>
+    <button type="submit">إرسال</button>
+  </form>
+</div>
+
+<footer>© 2025 معارف - جميع الحقوق محفوظة</footer>
+</body>
+</html>
